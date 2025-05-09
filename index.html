@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set&Scale - Business & Digital Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2D3142;
+            --secondary: #4F5D75;
+            --accent: #5C80BC;
+            --light: #E9ECEF;
+            --highlight: #5C80BC;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--primary);
+            padding-top: 80px;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        
+        .nav-item {
+            margin: 0 10px;
+        }
+        
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .dropdown-item {
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .dropdown-item:hover {
+            background-color: var(--light);
+            color: var(--accent);
+        }
+        
+        .hero-section {
+            height: 80vh;
+            background: linear-gradient(rgba(45, 49, 66, 0.7), rgba(45, 49, 66, 0.7)), url('/api/placeholder/1920/1080') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            border-color: var(--accent);
+            padding: 10px 25px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .service-category {
+            padding: 80px 0;
+        }
+        
+        .category-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .category-title h2 {
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .category-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 15px auto;
+        }
+        
+        .service-card {
+            margin-bottom: 30px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .service-card .card-body {
+            padding: 25px;
+        }
+        
+        .service-card .card-title {
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-card .card-text {
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .service-link {
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .service-link i {
+            margin-left: 5px;
+            transition: all 0.3s;
+        }
+        
+        .service-link:hover i {
+            transform: translateX(5px);
+        }
+        
+        .floating-cta {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+        }
+        
+        .cta-btn {
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(92, 128, 188, 0.3);
+            transition: all 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(92, 128, 188, 0.5);
+        }
+        
+        .service-links {
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .service-item {
+            padding: 10px 20px;
+            background-color: var(--light);
+            border-radius: 30px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .service-item:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .service-detail {
+            padding: 60px 0;
+        }
+        
+        .service-detail h3 {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .service-detail p {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .service-detail img {
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .related-blogs {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: var(--light);
+            border-radius: 8px;
+        }
+        
+        .related-blogs h4 {
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .blog-link {
+            display: block;
+            color: var(--accent);
+            margin-bottom: 10px;
+            text-decoration: none;
+        }
+        
+        .blog-link:hover {
+            text-decoration: underline;
+        }
+        
+        .category-header {
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .category-header:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/assets/images/site logo image.png" alt="Set&Scale Logo" class="me-2">
+                Set&Scale
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item dropdown">
+                        <!-- Category is clickable and opens dropdown -->
+                        <a class="nav-link dropdown-toggle category-header" href="#business-setup" id="business-legal-link" role="button" data-bs-toggle="dropdown">
+                            Business Setup & Legal
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="d-grid">
+                                <span class="dropdown-item-text fw-bold mb-2">Our Services:</span>
+                                <a class="dropdown-item" href="#company-registration">Company Registration</a>
+                                <a class="dropdown-item" href="#gst-registration">GST Registration & Filing</a>
+                                <a class="dropdown-item" href="#trademark">Trademark & IP</a>
+                                <a class="dropdown-item" href="#startup-recognition">DPIIT & Startup Recognition</a>
+                                <a class="dropdown-item" href="#fundraising">Fundraising Assistance</a>
+                                <a class="dropdown-item" href="#legal-contracts">Legal Contracts</a>
+                                <a class="dropdown-item" href="#business-licenses">Business Licenses</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <!-- Category is clickable and opens dropdown -->
+                        <a class="nav-link dropdown-toggle category-header" href="#digital-tech" id="digital-tech-link" role="button" data-bs-toggle="dropdown">
+                            Digital & Tech Growth
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="d-grid">
+                                <span class="dropdown-item-text fw-bold mb-2">Our Services:</span>
+                                <a class="dropdown-item" href="#website-development">Website & App Development</a>
+                                <a class="dropdown-item" href="#software-solutions">Custom Software Solutions</a>
+                                <a class="dropdown-item" href="#ecommerce">E-commerce Setup</a>
+                                <a class="dropdown-item" href="#social-media">Social Media Marketing</a>
+                                <a class="dropdown-item" href="#seo">Google Ads & SEO</a>
+                                <a class="dropdown-item" href="#content-marketing">Content Marketing</a>
+                                <a class="dropdown-item" href="#affiliate-marketing">Affiliate Marketing</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <!-- Category is clickable and opens dropdown -->
+                        <a class="nav-link dropdown-toggle category-header" href="#branding" id="branding-link" role="button" data-bs-toggle="dropdown">
+                            Branding & Promotions
+                        </a>
+                        <div class="dropdown-menu">
+                            <div class="d-grid">
+                                <span class="dropdown-item-text fw-bold mb-2">Our Services:</span>
+                                <a class="dropdown-item" href="#brand-identity">Brand Identity</a>
+                                <a class="dropdown-item" href="#corporate-branding">Corporate Branding</a>
+                                <a class="dropdown-item" href="#anamorphic-video">Anamorphic Videos</a>
+                                <a class="dropdown-item" href="#billboard-ads">Billboard Advertising</a>
+                                <a class="dropdown-item" href="#offline-marketing">Offline Marketing</a>
+                                <a class="dropdown-item" href="#pr-campaigns">PR & Media Outreach</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bars"></i> Menu
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a class="dropdown-item" href="#our-work">Our Work</a>
+                            <a class="dropdown-item" href="#methodology">Our Work Methodology</a>
+                            <a class="dropdown-item" href="#businesses">Businesses We Can Help</a>
+                            <a class="dropdown-item" href="#blogs">Important Reads</a>
+                            <a class="dropdown-item" href="#consult">Consult Us</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Set&Scale</h1>
+                <p>From paperwork to promotions — everything a startup needs.</p>
+                <a href="#consult" class="btn btn-primary">Get Started Today</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Setup & Legal Section -->
+    <section id="business-setup" class="service-category">
+        <div class="container">
+            <div class="category-title">
+                <h2>Business & Legal Solutions</h2>
+                <p>For company setup & compliance</p>
+            </div>
+            
+            <div class="service-links">
+                <a href="#company-registration" class="service-item">Company Registration</a>
+                <a href="#gst-registration" class="service-item">GST Registration & Filing</a>
+                <a href="#trademark" class="service-item">Trademark & IP</a>
+                <a href="#startup-recognition" class="service-item">DPIIT Recognition</a>
+                <a href="#fundraising" class="service-item">Fundraising</a>
+                <a href="#legal-contracts" class="service-item">Legal Contracts</a>
+                <a href="#business-licenses" class="service-item">Business Licenses</a>
+            </div>
+            
+            <!-- Company Registration -->
+            <div id="company-registration" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Company Registration</h3>
+                        <p>Start your business journey with the right legal foundation. At Set&Scale, we simplify the complex process of company incorporation, ensuring your business entity is registered correctly from day one.</p>
+                        <p>Our experienced team guides you through selecting the optimal business structure (Private Limited, LLP, OPC) based on your unique requirements, handling all paperwork, and ensuring compliance with regulatory frameworks.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="https://www.thehindu.com/business/Industry/the-hindu-explains-what-are-one-person-companies-and-why-do-we-need-them/article33770849.ece" class="blog-link">Pvt Ltd vs LLP: Which Structure Is Right For Your Startup?</a>
+                            <a href="#" class="blog-link">5 Common Mistakes To Avoid During Company Registration</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src= "/assets/images/company registration image.jpg"  height="200" width="450" alt="Company Registration" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GST Registration -->
+            <div id="gst-registration" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="/assets/images/gst registration image.jpg" alt="GST Registration" class="img-fluid">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>GST Registration & Filing</h3>
+                        <p>Navigate India's Goods and Services Tax system with confidence. Our GST specialists handle everything from initial registration to monthly returns and compliance management.</p>
+                        <p>We implement streamlined processes to maintain accurate records, ensure timely filings, and help you maximize legitimate input tax credits to optimize your tax position.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Understanding GST Thresholds: When Should You Register?</a>
+                            <a href="#" class="blog-link">E-invoicing Under GST: Requirements and Implementation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Trademark Registration -->
+            <div id="trademark" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Trademark, Copyright & Patent Registration</h3>
+                        <p>Protect your intellectual property with comprehensive IP services. Whether you're safeguarding your brand identity through trademark registration, protecting creative works with copyright, or securing your innovations through patents, our expert team guides you through the entire process.</p>
+                        <p>We conduct thorough preliminary searches, prepare impeccable applications, respond to examiner objections, and monitor your IP portfolio for potential infringements.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">IP Strategy For Startups: Building A Protective Moat</a>
+                            <a href="#" class="blog-link">International Trademark Protection: Madrid Protocol Explained</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="Trademark Registration" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DPIIT Recognition -->
+            <div id="startup-recognition" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="Startup Recognition" class="img-fluid">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>DPIIT & Startup India Recognition</h3>
+                        <p>Unlock government benefits and incentives designed specifically for innovative startups. Our experts help you navigate the DPIIT recognition process, preparing all necessary documentation and ensuring compliance with eligibility criteria.</p>
+                        <p>Beyond registration, we help you leverage your recognition status to access tax benefits, simplified compliance, fast-tracked patent applications, and government funding opportunities.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Benefits Of DPIIT Recognition: Beyond The Certificate</a>
+                            <a href="#" class="blog-link">Fund of Funds for Startups: Accessing Capital Through DPIIT</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fundraising -->
+            <div id="fundraising" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Fundraising & Investment Assistance</h3>
+                        <p>Transform your growth vision into reality with our comprehensive fundraising support. From seed funding to Series rounds, our financial experts help you prepare compelling pitches, create robust financial models, and connect with the right investors.</p>
+                        <p>We guide you through term sheet negotiations, due diligence processes, and regulatory compliance, ensuring you secure capital on favorable terms while maintaining strategic control of your venture.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Valuation Methodologies: How Investors Value Early-Stage Startups</a>
+                            <a href="#" class="blog-link">Creating A Compelling Pitch Deck: Investor Psychology</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="Fundraising" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Legal Contracts -->
+            <div id="legal-contracts" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="Legal Contracts" class="img-fluid">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Agreement Drafting & Legal Contracts</h3>
+                        <p>Establish clear, enforceable business relationships with professionally drafted legal agreements. Our legal experts create customized contracts tailored to your specific business requirements, protecting your interests while facilitating smooth operations.</p>
+                        <p>From founder agreements and employment contracts to vendor agreements and NDAs, we ensure comprehensive coverage of potential scenarios while maintaining practical usability.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Essential Clauses In Founder Agreements: Avoiding Future Disputes</a>
+                            <a href="#" class="blog-link">SaaS Contracts: Protecting Your Business While Scaling</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Business Licenses -->
+            <div id="business-licenses" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Business Licenses & Certifications</h3>
+                        <p>Ensure full compliance with regulatory requirements through our comprehensive licensing services. We identify all licenses and permits required for your specific business operations, prepare applications, and manage the approval process.</p>
+                        <p>From FSSAI and drug licenses to MSME registration and ISO certifications, our team handles the complexity while you focus on your core business activities.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Industry-Specific Licenses: What Your Business Needs</a>
+                            <a href="#" class="blog-link">ISO Certification Process: Implementation Guide For SMEs</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="Business Licenses" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital & Tech Growth Section -->
+    <section id="digital-tech" class="service-category bg-light">
+        <div class="container">
+            <div class="category-title">
+                <h2>Digital Growth & Tech Solutions</h2>
+                <p>For online presence & marketing</p>
+            </div>
+            
+            <div class="service-links">
+                <a href="#website-development" class="service-item">Website & App Development</a>
+                <a href="#software-solutions" class="service-item">Custom Software</a>
+                <a href="#ecommerce" class="service-item">E-commerce Setup</a>
+                <a href="#social-media" class="service-item">Social Media Marketing</a>
+                <a href="#seo" class="service-item">Google Ads & SEO</a>
+                <a href="#content-marketing" class="service-item">Content Marketing</a>
+                <a href="#affiliate-marketing" class="service-item">Affiliate Marketing</a>
+            </div>
+            
+            <!-- Website Development -->
+            <div id="website-development" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Website & App Development</h3>
+                        <p>Create a powerful digital presence with our custom website and application development services. Our team combines cutting-edge technology with intuitive design principles to create platforms that engage users and drive conversions.</p>
+                        <p>Whether you need a corporate website, mobile application, or comprehensive web portal, we deliver solutions optimized for performance, security, and scalability.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Progressive Web Apps vs. Native Apps: Making The Right Choice</a>
+                            <a href="#" class="blog-link">Core Web Vitals: Optimizing For User Experience & SEO</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="Website Development" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Custom Software -->
+            <div id="software-solutions" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="Custom Software" class="img-fluid">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Custom Software Solutions</h3>
+                        <p>Transform business challenges into opportunities with tailored software solutions. We develop custom applications designed specifically to address your unique operational requirements and efficiency bottlenecks.</p>
+                        <p>From CRM systems and inventory management to workflow automation and data analytics platforms, our development team creates robust, scalable software that evolves with your business.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Build vs. Buy: Framework For Software Decision-Making</a>
+                            <a href="#" class="blog-link">Microservices Architecture: Scaling Your Custom Solutions</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- E-commerce -->
+            <div id="ecommerce" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>E-commerce Setup & Optimization</h3>
+                        <p>Launch and grow your online store with our comprehensive e-commerce services. From platform selection and implementation to payment gateway integration and inventory management, we build seamless shopping experiences designed to maximize conversions.</p>
+                        <p>Our ongoing optimization services analyze user behavior, streamline checkout processes, and implement strategic upselling techniques to continually improve performance metrics.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Choosing The Right E-commerce Platform: Comparison Guide</a>
+                            <a href="#" class="blog-link">Reducing Cart Abandonment: Strategies That Actually Work</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="E-commerce Setup" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Social Media -->
+            <div id="social-media" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="Social Media Marketing" class="img-fluid">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Social Media Marketing & Management</h3>
+                        <p>Build meaningful connections with your target audience through strategic social media marketing. Our team creates platform-specific content that resonates with your audience, fosters community engagement, and drives measurable business outcomes.</p>
+                        <p>From content calendars and creative asset creation to community management and analytical reporting, we handle all aspects of your social media presence.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Algorithm Changes: Staying Visible On Social Platforms</a>
+                            <a href="#" class="blog-link">B2B Social Media Strategy: LinkedIn Content That Converts</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEO -->
+            <div id="seo" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Google Ads, SEO & PPC</h3>
+                        <p>Drive qualified traffic and generate leads through strategic search engine marketing. Our comprehensive approach combines technical SEO optimization, content strategy, and paid advertising campaigns to maximize your digital visibility.</p>
+                        <p>With data-driven keyword research, competitive analysis, and continuous performance tracking, we ensure your investment delivers measurable returns through improved rankings and increased conversions.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">E-E-A-T: Google's Latest Ranking Factors Explained</a>
+                            <a href="#" class="blog-link">Performance Max Campaigns: Optimizing For Conversion Value</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="SEO & PPC" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content Marketing -->
+            <div id="content-marketing" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="Content Marketing" class="img-fluid">
+                    </div>
+                    <div class="col-lg-6">
+                        <h3>Content & Email Marketing</h3>
+                        <p>Establish authority and nurture leads through strategic content marketing. Our team creates valuable, relevant content that addresses your audience's pain points, builds trust, and guides prospects through the buyer's journey.</p>
+                        <p>From blog posts and case studies to email nurture sequences and newsletters, we develop comprehensive content strategies aligned with your business objectives.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Content Atomization: Maximizing ROI From Premium Content</a>
+                            <a href="#" class="blog-link">Email Segmentation Strategies: Beyond Basic Demographics</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Affiliate Marketing -->
+            <div id="affiliate-marketing" class="service-detail">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h3>Affiliate & Performance Marketing</h3>
+                        <p>Scale your customer acquisition while controlling costs through results-based marketing programs. Our performance marketing experts design and manage affiliate networks that expand your reach through trusted third-party promoters.</p>
+                        <p>We handle partner recruitment, creative asset development, commission structure design, and performance tracking to create sustainable growth channels with predictable ROI.</p>
+                        <div class="related-blogs">
+                            <h4>Related Resources</h4>
+                            <a href="#" class="blog-link">Building An Affiliate Program: From Strategy To Launch</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <img src="/api/placeholder/600/400" alt="Affiliate Marketing" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Branding & Promotions Section -->
+<section id="branding" class="service-category">
+    <div class="container">
+        <div class="category-title">
+            <h2>Branding & Offline Promotions</h2>
+            <p>For brand visibility & engagement</p>
+        </div>
+        
+        <div class="service-links">
+            <a href="#brand-identity" class="service-item">Brand Identity & Logo Design</a>
+            <a href="#corporate-branding" class="service-item">Corporate Branding</a>
+            <a href="#anamorphic-video" class="service-item">Anamorphic Videos</a>
+            <a href="#billboard-ads" class="service-item">Billboard Advertising</a>
+            <a href="#offline-marketing" class="service-item">Offline Marketing</a>
+            <a href="#pr-campaigns" class="service-item">PR & Media Outreach</a>
+        </div>
+        
+        <!-- Brand Identity -->
+        <div id="brand-identity" class="service-detail">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Brand Identity & Logo Design</h3>
+                    <p>Create a memorable visual identity that captures your brand's essence and connects with your target audience. Our expert designers craft distinctive logos and comprehensive brand identity systems that communicate your unique value proposition.</p>
+                    <p>From color psychology and typography selection to visual elements and style guides, we develop cohesive branding that creates instant recognition and builds long-term brand equity.</p>
+                    <div class="related-blogs">
+                        <h4>Related Resources</h4>
+                        <a href="#" class="blog-link">Psychology of Logo Design: Why Shapes and Colors Matter</a>
+                        <a href="#" class="blog-link">Brand Identity Systems: Moving Beyond Just a Logo</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="Brand Identity Design" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Corporate Branding -->
+         <div id="corporate-branding" class="service-detail">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="Corporate Branding" class="img-fluid">
+                </div>
+                <div class="col-lg-6">
+                    <h3>Corporate Branding & Rebranding</h3>
+                    <p>Transform your company's market perception through strategic corporate branding. Whether you're launching a new venture, repositioning an existing business, or refreshing your image, our comprehensive branding solutions align your visual identity with your corporate values and business objectives.</p>
+                    <p>We develop detailed brand guidelines, communication strategies, and implementation plans that ensure consistency across all touchpoints while building meaningful connections with your stakeholders.</p>
+                    <div class="related-blogs">
+                        <h4>Related Resources</h4>
+                        <a href="#" class="blog-link">Rebranding Strategy: When and How to Evolve Your Corporate Identity</a>
+                        <a href="#" class="blog-link">Internal Brand Alignment: Ensuring Employee Buy-in During Transitions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Anamorphic Video -->
+        <div id="anamorphic-video" class="service-detail">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Anamorphic Video Creation</h3>
+                    <p>Captivate audiences with cutting-edge anamorphic video content that brings your brand to life in spectacular fashion. Our creative team produces immersive 3D visual experiences for digital billboards, building projections, and social media campaigns that create powerful "stop-and-stare" moments.</p>
+                    <p>Using advanced motion design techniques and optical illusion principles, we create memorable visual spectacles that generate viral engagement and position your brand as innovative and forward-thinking.</p>
+                    <div class="related-blogs">
+                        <h4>Related Resources</h4>
+                        <a href="#" class="blog-link">The Science Behind Anamorphic Illusions: Why They're So Effective</a>
+                        <a href="#" class="blog-link">From Concept to Viral: Creating Shareable Anamorphic Content</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="Anamorphic Video" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Billboard Ads -->
+        <div id="billboard-ads" class="service-detail">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="Billboard Advertising" class="img-fluid">
+                </div>
+                <div class="col-lg-6">
+                    <h3>Citywide Billboard & Digital Screen Ads</h3>
+                    <p>Dominate the physical landscape with strategic out-of-home advertising campaigns. Our OOH specialists identify prime locations with optimal visibility and audience demographics, designing high-impact creative that commands attention in crowded urban environments.</p>
+                    <p>From traditional static billboards to programmatic digital displays, we manage the entire process from concept development and media buying to installation and performance measurement.</p>
+                    <div class="related-blogs">
+                        <h4>Related Resources</h4>
+                        <a href="#" class="blog-link">Digital vs. Traditional Billboards: ROI Analysis for Urban Markets</a>
+                        <a href="#" class="blog-link">Location Intelligence: The Science of Billboard Placement</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Offline Marketing -->
+        <div id="offline-marketing" class="service-detail">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Offline Marketing Materials</h3>
+                    <p>Extend your brand presence into the physical world with professionally designed print collateral. Our design team creates compelling business cards, brochures, flyers, and promotional materials that reinforce your brand identity and deliver your message effectively.</p>
+                    <p>With meticulous attention to paper quality, printing techniques, and finishing options, we produce tactile marketing assets that make lasting impressions and complement your digital marketing efforts.</p>
+                    <div class="related-blogs">
+                        <h4>Related Resources</h4>
+                        <a href="#" class="blog-link">Print Finishes That Make an Impact: Beyond Standard Cards</a>
+                        <a href="#" class="blog-link">QR Integration: Bridging Physical Materials with Digital Experiences</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="Offline Marketing Materials" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        
+        <!-- PR Campaigns -->
+        <div id="pr-campaigns" class="service-detail">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="/api/placeholder/600/400" alt="PR Campaigns" class="img-fluid">
+                </div>
+                <div class="col-lg-6">
+                    <h3>PR & Media Outreach Campaigns</h3>
+                    <p>Build credibility and amplify your brand story through strategic public relations. Our PR specialists develop newsworthy angles, craft compelling press releases, and leverage established media relationships to secure valuable coverage across relevant publications.</p>
+                    <p>From product launches and corporate announcements to thought leadership positioning and crisis management, we help shape positive narratives around your brand and increase your visibility among key stakeholders.</p>
+                    <div class="related-blogs">
+                        <h4>Related Resources</h4>
+                        <a href="#" class="blog-link">Earned Media Strategy: Creating Stories Journalists Want to Cover</a>
+                        <a href="#" class="blog-link">Measuring PR Impact: Beyond AVE to Business Outcomes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Our Work Section -->
+<section id="our-work" class="service-category bg-light">
+    <div class="container">
+        <div class="category-title">
+            <h2>Our Work</h2>
+            <p>Success stories from businesses we've helped</p>
+        </div>
+        
+        <div class="row">
+            <!-- Project 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <img src="/api/placeholder/400/300" alt="Project 1" class="img-fluid">
+                    <div class="card-body">
+                        <h4 class="card-title">TechInnovate Startup Launch</h4>
+                        <p class="card-text">From company registration to market entry, we helped TechInnovate build their foundation and digital presence.</p>
+                        <a href="#" class="service-link">View Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <img src="/api/placeholder/400/300" alt="Project 2" class="img-fluid">
+                    <div class="card-body">
+                        <h4 class="card-title">FreshEats E-commerce Transformation</h4>
+                        <p class="card-text">Helped a traditional food business transition to e-commerce, resulting in 300% growth in 6 months.</p>
+                        <a href="#" class="service-link">View Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="service-card">
+                    <img src="/api/placeholder/400/300" alt="Project 3" class="img-fluid">
+                    <div class="card-body">
+                        <h4 class="card-title">UrbanStyle Brand Revitalization</h4>
+                        <p class="card-text">Complete rebranding and marketing campaign that repositioned a declining retail brand for the digital era.</p>
+                        <a href="#" class="service-link">View Case Study <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-primary">View All Projects</a>
+        </div>
+    </div>
+</section>
+<!-- Work Methodology Section -->
+<section id="methodology" class="service-category">
+    <div class="container">
+        <div class="category-title">
+            <h2>Our Work Methodology</h2>
+            <p>How we deliver consistent results for our clients</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <!-- Step 1 -->
+            <div class="col-lg-3 col-md-6 mb-4 text-center">
+                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto" style="width: 120px; height: 120px;">
+                    <i class="fas fa-search fa-3x text-primary"></i>
+                </div>
+                <h4 class="mt-4">Discovery & Analysis</h4>
+                <p>We start by understanding your business, goals, and challenges through in-depth consultation.</p>
+            </div>
+            
+            <!-- Step 2 -->
+            <div class="col-lg-3 col-md-6 mb-4 text-center">
+                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto" style="width: 120px; height: 120px;">
+                    <i class="fas fa-lightbulb fa-3x text-primary"></i>
+                </div>
+                <h4 class="mt-4">Strategy Development</h4>
+                <p>Creating a customized roadmap with clear milestones and deliverables for your growth.</p>
+            </div>
+            
+            <!-- Step 3 -->
+            <div class="col-lg-3 col-md-6 mb-4 text-center">
+                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto" style="width: 120px; height: 120px;">
+                    <i class="fas fa-cogs fa-3x text-primary"></i>
+                </div>
+                <h4 class="mt-4">Implementation</h4>
+                <p>Our expert teams execute the strategy with precision and attention to detail.</p>
+            </div>
+            
+            <!-- Step 4 -->
+            <div class="col-lg-3 col-md-6 mb-4 text-center">
+                <div class="rounded-circle bg-light d-flex align-items-center justify-content-center mx-auto" style="width: 120px; height: 120px;">
+                    <i class="fas fa-chart-line fa-3x text-primary"></i>
+                </div>
+                <h4 class="mt-4">Measurement & Optimization</h4>
+                <p>Continuous performance tracking and refinement for optimal results.</p>
+            </div>
+        </div>
+        
+        <div class="mt-5 text-center">
+            <p class="lead">Our transparent approach ensures you're always informed and involved throughout the process.</p>
+            <a href="#consult" class="btn btn-primary mt-3">Learn How We Can Work Together</a>
+        </div>
+    </div>
+</section>
+<!-- Businesses We Can Help Section -->
+<section id="businesses" class="service-category bg-light">
+    <div class="container">
+        <div class="category-title">
+            <h2>How We Can Help You</h2>
+            <p>Solutions tailored for businesses at every stage</p>
+        </div>
+        
+        <div class="row">
+            <!-- Startups -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-4 text-center">
+                            <i class="fas fa-rocket fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="card-title text-center mb-3">For Startups</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Legal foundation & company registration</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> DPIIT recognition & startup benefits</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Brand identity & digital presence</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Funding preparation & investor connections</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Customer acquisition strategies</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 text-center">
+                        <a href="#consult" class="btn btn-outline-primary">Get Started</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SMEs -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-4 text-center">
+                            <i class="fas fa-store fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="card-title text-center mb-3">For SMEs</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Digital transformation & automation</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> E-commerce setup & optimization</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Scalable marketing systems</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Compliance management & legal support</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Brand refinement & market expansion</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 text-center">
+                        <a href="#consult" class="btn btn-outline-primary">Scale Your Business</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Established Businesses -->
+            <div class="col-lg-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body">
+                        <div class="mb-4 text-center">
+                            <i class="fas fa-building fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="card-title text-center mb-3">For Established Businesses</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Rebranding & market repositioning</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Advanced digital marketing campaigns</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Custom software & enterprise solutions</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Strategic partnerships & acquisitions</li>
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Media relations & PR management</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 text-center">
+                        <a href="#consult" class="btn btn-outline-primary">Elevate Your Brand</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Blogs/Important Reads Section -->
+<section id="blogs" class="service-category">
+    <div class="container">
+        <div class="category-title">
+            <h2>Important Reads</h2>
+            <p>Insights, guides, and updates for business growth</p>
+        </div>
+        
+        <div class="row">
+            <!-- Blog Post 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="/api/placeholder/400/250" class="card-img-top" alt="Blog Image">
+                    <div class="card-body">
+                        <span class="badge bg-primary mb-2">Legal</span>
+                        <h5 class="card-title">Understanding The New Company Law Amendments</h5>
+                        <p class="card-text">How recent changes to the Companies Act affect startups and small businesses in 2025.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="service-link">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Blog Post 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="/api/placeholder/400/250" class="card-img-top" alt="Blog Image">
+                    <div class="card-body">
+                        <span class="badge bg-success mb-2">Marketing</span>
+                        <h5 class="card-title">AI-Powered Marketing Strategies For 2025</h5>
+                        <p class="card-text">How small businesses can leverage artificial intelligence for customer acquisition.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="service-link">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Blog Post 3 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="/api/placeholder/400/250" class="card-img-top" alt="Blog Image">
+                    <div class="card-body">
+                        <span class="badge bg-warning text-dark mb-2">Funding</span>
+                        <h5 class="card-title">Ultimate Guide To Government Grants For Tech Startups</h5>
+                        <p class="card-text">Navigating the complex landscape of government funding opportunities in 2025.</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0">
+                        <a href="#" class="service-link">Read Article <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-primary">View All Articles</a>
+        </div>
+    </div>
+</section>
+<!-- Consult Us Section -->
+<section id="consult" class="service-category bg-light">
+    <div class="container">
+        <div class="category-title">
+            <h2>Consult Us</h2>
+            <p>Let's discuss how we can help your business grow</p>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card border-0 shadow">
+                    <div class="card-body p-5">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Full Name <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="company" class="form-label">Company Name</label>
+                                    <input type="text" class="form-control" id="company">
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="service" class="form-label">Service You're Interested In</label>
+                                <select class="form-select" id="service">
+                                    <option selected>Select a service...</option>
+                                    <option value="company-registration">Company Registration</option>
+                                    <option value="trademark">Trademark Registration</option>
+                                    <option value="website-development">Website Development</option>
+                                    <option value="digital-marketing">Digital Marketing</option>
+                                    <option value="branding">Branding Services</option>
+                                    <option value="general-inquiry">General Inquiry</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Tell Us About Your Requirements</label>
+                                <textarea class="form-control" id="message" rows="5"></textarea>
+                            </div>
+                            
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary btn-lg">Schedule Consultation</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <p>Prefer to email or call? Reach us directly at:</p>
+                    <p><strong>Email:</strong> <a href="mailto:info@setandscale.com" class="text-decoration-none">info@setandscale.com</a> | <strong>Phone:</strong> <a href="tel:+919876543210" class="text-decoration-none">+91 98765 43210</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer Section -->
+<footer class="bg-dark text-light py-5 mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4">
+                <h5 class="mb-3">Set&Scale</h5>
+                <p>Your complete business growth partner - from paperwork to promotions, we help businesses set up and scale effectively.</p>
+                <div class="social-icons mt-3">
+                    <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-light me-3"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            
+            <div class="col-lg-2 mb-4">
+                <h5 class="mb-3">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#" class="text-light text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="#our-work" class="text-light text-decoration-none">Our Work</a></li>
+                    <li class="mb-2"><a href="#methodology" class="text-light text-decoration-none">Methodology</a></li>
+                    <li class="mb-2"><a href="#businesses" class="text-light text-decoration-none">Who We Help</a></li>
+                    <li class="mb-2"><a href="#blogs" class="text-light text-decoration-none">Blogs</a></li>
+                    <li class="mb-2"><a href="#consult" class="text-light text-decoration-none">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-3 mb-4">
+                <h5 class="mb-3">Services</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="#business-setup" class="text-light text-decoration-none">Business Setup & Legal</a></li>
+                    <li class="mb-2"><a href="#digital-tech" class="text-light text-decoration-none">Digital & Tech Growth</a></li>
+                    <li class="mb-2"><a href="#branding" class="text-light text-decoration-none">Branding & Promotions</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-3 mb-4">
+                <h5 class="mb-3">Contact Us</h5>
+                <address class="mb-0">
+                    <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Business Park, Sector 5, Mumbai, India</p>
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i> +91 98765 43210</p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> info@setandscale.com</p>
+                </address>
+            </div>
+        </div>
+        
+        <hr class="my-4 bg-light opacity-25">
+        
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0">&copy; 2025 Set&Scale. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0">
+                    <a href="#" class="text-light text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-light text-decoration-none">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
